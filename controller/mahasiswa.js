@@ -146,11 +146,14 @@ exports.index = (req, res) => {
       console.log("gagal ambil data");
     } else {
       console.log(hasil);
+      res.status(200).json({
+        pesan: hasil,
+      });
     }
   });
-  res.status(200).json({
-    pesan: "index dari mahasiswa",
-  });
+  // res.status(200).json({
+  //   pesan: "index dari mahasiswa",
+  // });
 };
 
 //CONTROLLER REGISTRASI
@@ -306,78 +309,3 @@ exports.halamanVerifikasi = (req, res) => {
   // res.json("halaman ini untuk verfikasi token yang yang role nya hanya 2 ya");
 };
 
-exports.testing = (req, res, next) => {
-  // let query = "SELECT * FROM ?? ";
-
-
-
-  let pr = () => {
-    return new Promise((resolve) => {
-      let query =
-        "SELECT * FROM `order` INNER JOIN film ON order.id_order =  film.id_order";
-      // let table = ["film", 1, 1];
-      query = mysql.format(query);
-      koneksiDatabase.query(query, (err, result) => {
-        if (err) {
-          console.log("gagal");
-        } else {
-          // let nama = [];
-          // order = {
-          //   id_order: result[0].id_order,
-          //   nama_film: nama,
-          // };
-          // for (const element of result) {
-          //   nama.push(element.nama);
-          // }
-          // order = {
-          //   id_order: result[0].id_order,
-          //   nama_film: nama,
-          // };
-          resolve(result)
-          next();
-          // res.json({ pesan: "halaman rahasia", data: order });
-        }
-      });
-    })
-  }
-
-
-  // pr().then((result) => {
-  //   // console.log(row)
-  //   let nama = [];
-  //   order = {
-  //     id_order: result[0].id_order,
-  //     nama_film: nama,
-  //   };
-  //   for (const element of result) {
-  //     nama.push(element.nama);
-  //   }
-  //   order = {
-  //     id_order: result[0].id_order,
-  //     nama_film: nama,
-  //   };
-  //   res.json(order)
-  // }
-  // )
-
-  Promise.all([pr()]).then(([result]) => {
-    // console.log(row)
-    let nama = [];
-    order = {
-      id_order: result[0].id_order,
-      nama_film: nama,
-    };
-    for (const element of result) {
-      nama.push(element.nama);
-    }
-    order = {
-      id_order: result[0].id_order,
-      nama_film: nama,
-    };
-    res.json(order)
-
-  })
-
-
-
-};

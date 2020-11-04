@@ -21,6 +21,7 @@
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
+    "@vercel/node": "^1.8.4",
     "eslint": "^7.11.0",
     "eslint-plugin-react": "^7.21.4"
   }

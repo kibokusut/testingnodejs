@@ -11,8 +11,6 @@ router.post("/registrasi", MahasiswaConttroller.registrasi);
 router.post("/login", MahasiswaConttroller.login);
 router.post("/cek", MahasiswaConttroller.checkpassword);
 
-router.get("/testing", MahasiswaConttroller.testing);
-
 router.get(
   "/halamanrahasia",
   verifikasi(),

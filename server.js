@@ -11,35 +11,35 @@ server.listen(PORT, () => {
 
 // const express = require("express");
 // const app = express();
-// const bodyParser = require("body-parser");
-// const mysql = require("mysql");
-// const cors = require("cors");
-// const { json } = require("body-parser");
+const bodyParser = require("body-parser");
+const mysql = require("mysql");
+const cors = require("cors");
+const { json } = require("body-parser");
 // const routes = require("./middleware/index");
 
-// app.use(cors());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.listen(2000, () => {
 //   console.log("berhasil jalan");
 // });
 
-// let koneksi = mysql.createConnection({
-//   host: "34.101.105.174",
-//   user: "root",
-//   password: "15mei2019",
-//   database: "testing",
-//   multipleStatements: true,
-// });
+let koneksi = mysql.createConnection({
+  host: "34.101.105.174",
+  user: "root",
+  password: "15mei2019",
+  database: "testing",
+  multipleStatements: true,
+});
 
-// koneksi.connect((err) => {
-//   if (!err) {
-//     console.log("konek ke google cloud bos");
-//   } else {
-//     console.log(err);
-//   }
-// });
+koneksi.connect((err) => {
+  if (!err) {
+    console.log("konek ke google cloud bos");
+  } else {
+    console.log(err);
+  }
+});
 
 // // app.get("/home", (req, res, next) => {
 // //   let dataFilm = koneksi.query(
@@ -138,13 +138,13 @@ server.listen(PORT, () => {
 
 // // SELECT * FROM kategori WHERE id_kategori = ?
 
-// app.get("/multiple", (req, res, next) => {
-//   var sql = "SELECT * FROM film ; SELECT * FROM kategori";
-//   koneksi.query(sql, ["", ""], function (error, results, fields) {
-//     if (!error) {
-//       console.log(results[0]);
-//       console.log(results[1]);
-//       res.json(results);
-//     }
-//   });
-// });
+app.get("/multiple", (req, res, next) => {
+  var sql = "SELECT * FROM film ; SELECT * FROM kategori";
+  koneksi.query(sql, ["", ""], function (error, results, fields) {
+    if (!error) {
+      console.log(results[0]);
+      console.log(results[1]);
+      res.json(results);
+    }
+  });
+});
